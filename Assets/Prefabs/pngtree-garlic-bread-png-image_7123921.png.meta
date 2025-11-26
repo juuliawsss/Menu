@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d7f213296353b794c901e80617492beb
+guid: ac34eac6151d6364d9be21d6c509bada
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1693369287469211197
-    second: garlic-bread-png-4ulm9duqrdcd61s0_0
+      213: -2735182236390435874
+    second: pngtree-garlic-bread-png-image_7123921_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: garlic-bread-png-4ulm9duqrdcd61s0_0
+      name: pngtree-garlic-bread-png-image_7123921_0
       rect:
         serializedVersion: 2
-        x: 17
-        y: 82
-        width: 867
-        height: 706
+        x: 85
+        y: 18
+        width: 160
+        height: 327
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d3e9825256e008710800000000000000
-      internalID: 1693369287469211197
+      spriteID: ed35df36f3eaa0ad0800000000000000
+      internalID: -2735182236390435874
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      garlic-bread-png-4ulm9duqrdcd61s0_0: 1693369287469211197
+      pngtree-garlic-bread-png-image_7123921_0: -2735182236390435874
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

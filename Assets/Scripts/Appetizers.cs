@@ -24,17 +24,10 @@ public class Appetizers : MonoBehaviour
             {
                 string item = appetizerList[currentAppetizerIndex];
                 cartScript.AddItem(item);
-                Debug.Log($"Ordered: {item}");
             }
-            else
-            {
-                Debug.LogWarning("No Shoppingcart script found on assigned GameObject.");
-            }
+            // else do nothing
         }
-        else
-        {
-            Debug.LogWarning("Shoppingcart GameObject not set in Appetizers script.");
-        }
+    // else do nothing
     }
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -50,10 +43,8 @@ public class Appetizers : MonoBehaviour
     // This method is called when the button is pressed
     public void OnAppetizerButtonPressed()
     {
-        // Switch to the Appetizer scene, then order the appetizer
-    SceneManager.LoadScene("appetizermenu");
-        // Optionally, you can delay ordering until after the scene loads, but for now, order immediately:
-        OrderCurrentAppetizer();
+        // Only switch to the Appetizer scene
+        SceneManager.LoadScene("appetizermenu");
     }
     
     // ...existing code...

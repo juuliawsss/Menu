@@ -509,6 +509,7 @@ GameObject:
   - component: {fileID: 469405434}
   - component: {fileID: 469405433}
   - component: {fileID: 469405432}
+  - component: {fileID: 469405435}
   m_Layer: 5
   m_Name: Appetizers
   m_TagString: Untagged
@@ -618,6 +619,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 469405430}
   m_CullTransparentMesh: 1
+--- !u!114 &469405435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 469405430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbdbb577d28d4374eac925665ae183ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Appetizers
+  appetizerButton: {fileID: 469405432}
+  shoppingcart: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

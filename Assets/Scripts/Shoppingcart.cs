@@ -26,6 +26,7 @@ public class Shoppingcart : MonoBehaviour
         {
             Debug.Log(item);
         }
+        OrderedItems = new List<string>(cartItems);
         cartItems.Clear();
     }
 
@@ -34,4 +35,6 @@ public class Shoppingcart : MonoBehaviour
     {
         PlaceOrder();
     }
+
+    public static List<string> OrderedItems = new List<string>();
 }

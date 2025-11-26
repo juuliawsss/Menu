@@ -1,10 +1,10 @@
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 using System.Collections.Generic;
 
 public class OrderSummary : MonoBehaviour
 {
-    public Text orderText; // Assign in Inspector
+    public TextMeshProUGUI orderText; // Assign in Inspector
 
     void Start()
     {

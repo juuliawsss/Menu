@@ -266,6 +266,7 @@ GameObject:
   - component: {fileID: 270360754}
   - component: {fileID: 270360756}
   - component: {fileID: 270360755}
+  - component: {fileID: 270360757}
   m_Layer: 5
   m_Name: ostoskori2
   m_TagString: Untagged
@@ -330,6 +331,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 270360753}
   m_CullTransparentMesh: 1
+--- !u!114 &270360757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270360753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78ddf6bc8a64a6043a1479eae14b2838, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Shoppingcart
 --- !u!1 &299505800
 GameObject:
   m_ObjectHideFlags: 0

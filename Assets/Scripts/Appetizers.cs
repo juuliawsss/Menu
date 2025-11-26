@@ -1,3 +1,4 @@
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -49,7 +50,9 @@ public class Appetizers : MonoBehaviour
     // This method is called when the button is pressed
     public void OnAppetizerButtonPressed()
     {
-        // When the button is pressed, order the current appetizer
+        // Switch to the Appetizer scene, then order the appetizer
+    SceneManager.LoadScene("appetizermenu");
+        // Optionally, you can delay ordering until after the scene loads, but for now, order immediately:
         OrderCurrentAppetizer();
     }
     

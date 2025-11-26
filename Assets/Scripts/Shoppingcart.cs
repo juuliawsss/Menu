@@ -1,5 +1,4 @@
 using UnityEngine;
-
 using System.Collections.Generic;
 
 public class Shoppingcart : MonoBehaviour
@@ -28,5 +27,11 @@ public class Shoppingcart : MonoBehaviour
             Debug.Log(item);
         }
         cartItems.Clear();
+    }
+
+    // Call this from a UI button to place the order
+    public void OnShoppingcartButtonPressed()
+    {
+        PlaceOrder();
     }
 }

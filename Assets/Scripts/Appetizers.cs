@@ -5,7 +5,7 @@ using TMPro;
 public class Appetizers : MonoBehaviour
 {
     [SerializeField] private Button appetizerButton;
-    [SerializeField] private Shoppingcart shoppingcart; // Reference to Shoppingcart
+    public GameObject shoppingcart; // Assign the Shoppingcart prefab or object in the Inspector
 
     private string[] appetizerList = {
         "� Garlic bread and cheese assortment - Fresh crispy focaccia bread and Italian cheeses. (vegan) 5.00€",
@@ -18,13 +18,21 @@ public class Appetizers : MonoBehaviour
     {
         if (shoppingcart != null)
         {
-            string item = appetizerList[currentAppetizerIndex];
-            shoppingcart.AddItem(item);
-            Debug.Log($"Ordered: {item}");
+            Shoppingcart cartScript = shoppingcart.GetComponent<Shoppingcart>();
+            if (cartScript != null)
+            {
+                string item = appetizerList[currentAppetizerIndex];
+                cartScript.AddItem(item);
+                Debug.Log($"Ordered: {item}");
+            }
+            else
+            {
+                Debug.LogWarning("No Shoppingcart script found on assigned GameObject.");
+            }
         }
         else
         {
-            Debug.LogWarning("Shoppingcart reference not set in Appetizers script.");
+            Debug.LogWarning("Shoppingcart GameObject not set in Appetizers script.");
         }
     }
     

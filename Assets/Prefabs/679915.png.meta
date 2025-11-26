@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3235f08a3472ae64a85d43de72ad9904
+guid: 536990a683058724aa3746f2e7ceae8d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7925480193934037693
-    second: cartoon-shopping-cart-icon-clip-art-2d-illustration-free-vector-removebg-preview_0
+      213: 5020608393074351771
+    second: 679915_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cartoon-shopping-cart-icon-clip-art-2d-illustration-free-vector-removebg-preview_0
+      name: 679915_0
       rect:
         serializedVersion: 2
-        x: 113
-        y: 111
-        width: 296
-        height: 284
+        x: 0
+        y: 15
+        width: 512
+        height: 482
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 34dea2e21c9030290800000000000000
-      internalID: -7925480193934037693
+      spriteID: b9e9a81bbb8cca540800000000000000
+      internalID: 5020608393074351771
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      cartoon-shopping-cart-icon-clip-art-2d-illustration-free-vector-removebg-preview_0: -7925480193934037693
+      679915_0: 5020608393074351771
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

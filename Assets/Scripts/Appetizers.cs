@@ -46,8 +46,11 @@ public class Appetizers : MonoBehaviour
         // Only switch to the Appetizer scene
         SceneManager.LoadScene("appetizermenu");
     }
-    
-    // ...existing code...
+
+    public void OnShoppingcartButtonPressed()
+    {
+        SceneManager.LoadScene("Shoppingcart"); // Use your actual scene name here
+    }
 
     // Update is called once per frame
     void Update()

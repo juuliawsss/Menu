@@ -28,6 +28,8 @@ public class Shoppingcart : MonoBehaviour
         }
         OrderedItems = new List<string>(cartItems);
         cartItems.Clear();
+        // Switch to OrderSummary scene after placing order
+        UnityEngine.SceneManagement.SceneManager.LoadScene("OrderSummary");
     }
 
     // Call this from a UI button to place the order

@@ -23,4 +23,9 @@ public class OrderSummary : MonoBehaviour
             orderText.text = "Your cart is empty.";
         }
     }
+    // Call this method to switch back to the Appetizermenu scene
+    public void SwitchToAppetizerMenu()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Appetizermenu");
+    }
 }

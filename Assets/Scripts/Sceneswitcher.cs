@@ -19,4 +19,9 @@ public class SceneSwitcher : MonoBehaviour
     {
         SceneManager.LoadScene("appetizermenu");
     }
+
+    public void SwitchToOrderSummary()
+    {
+        SceneManager.LoadScene("OrderSummary");
+    }
 }

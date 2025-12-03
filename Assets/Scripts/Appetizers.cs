@@ -6,6 +6,7 @@ using TMPro;
 public class Appetizers : MonoBehaviour
 {
     [SerializeField] private Button appetizerButton;
+    [SerializeField] private TextMeshProUGUI appetizerText; // Assign in Inspector
     public GameObject shoppingcart; // Assign the Shoppingcart prefab or object in the Inspector
 
     private string[] appetizerList = {
@@ -14,6 +15,7 @@ public class Appetizers : MonoBehaviour
     };
 
     private int currentAppetizerIndex = 0;
+
     // Call this method to order the currently displayed appetizer
     public void OrderCurrentAppetizer()
     {
@@ -25,12 +27,9 @@ public class Appetizers : MonoBehaviour
                 string item = appetizerList[currentAppetizerIndex];
                 cartScript.AddItem(item);
             }
-            // else do nothing
         }
-    // else do nothing
     }
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         // If button is assigned, add a listener for when it's clicked
@@ -40,21 +39,27 @@ public class Appetizers : MonoBehaviour
         }
     }
 
+    // Call this from Unity EventTrigger or OnPointerClick on the text object
+    public void OnAppetizerTextClicked()
+    {
+        OrderCurrentAppetizer();
+    }
+
     // This method is called when the button is pressed
     public void OnAppetizerButtonPressed()
     {
-        // Only switch to the Appetizer scene
         SceneManager.LoadScene("appetizermenu");
     }
 
+    // ...existing code...
+
     public void OnShoppingcartButtonPressed()
     {
-        SceneManager.LoadScene("Shoppingcart"); // Use your actual scene name here
+        SceneManager.LoadScene("OrderSummary");
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        // ...existing code...
     }
 }

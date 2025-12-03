@@ -14,6 +14,7 @@ public class OrderSummary : MonoBehaviour
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
             sb.AppendLine("Your Order:");
+            sb.AppendLine($"Amount: {Dropdown.Amount}");
             foreach (var item in items)
             {
                 // Remove any unsupported or control characters

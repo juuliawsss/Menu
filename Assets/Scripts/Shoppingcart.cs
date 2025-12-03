@@ -9,8 +9,18 @@ public class Shoppingcart : MonoBehaviour
     // Add an item to the cart
     public void AddItem(string itemName)
     {
-        cartItems.Add(itemName);
-        Debug.Log($"Added {itemName} to cart.");
+        // If the item is Pasta Bolognese or Pizza Quattro Stagione, add the amount
+        if (itemName.Contains("Pasta Bolognese") || itemName.Contains("Pizza, Quattro Stagione"))
+        {
+            string itemWithAmount = $"{itemName} x{Dropdown.Amount}";
+            cartItems.Add(itemWithAmount);
+            Debug.Log($"Added {itemWithAmount} to cart.");
+        }
+        else
+        {
+            cartItems.Add(itemName);
+            Debug.Log($"Added {itemName} to cart.");
+        }
     }
 
     // Place the order

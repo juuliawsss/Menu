@@ -35,6 +35,7 @@ public class Shoppingcart : MonoBehaviour
     // Call this from a UI button to load OrderSummary scene
     public void OnShoppingcartButtonPressed()
     {
+        OrderedItems = new List<string>(cartItems);
         UnityEngine.SceneManagement.SceneManager.LoadScene("OrderSummary");
     }
 

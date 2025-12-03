@@ -12,11 +12,15 @@ public class OrderSummary : MonoBehaviour
         List<string> items = Shoppingcart.OrderedItems;
         if (items != null && items.Count > 0)
         {
-            orderText.text = "Your Order:\n";
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            sb.AppendLine("Your Order:");
             foreach (var item in items)
             {
-                orderText.text += item + "\n";
+                // Remove any unsupported or control characters
+                string cleanItem = System.Text.RegularExpressions.Regex.Replace(item, "[^\u0020-\u007E€]", "");
+                sb.AppendLine(cleanItem.Trim());
             }
+            orderText.text = sb.ToString();
         }
         else
         {

@@ -10,8 +10,8 @@ public class Appetizers : MonoBehaviour
     public GameObject shoppingcart; // Assign the Shoppingcart prefab or object in the Inspector
 
     private string[] appetizerList = {
-        "� Garlic bread and cheese assortment - Fresh crispy focaccia bread and Italian cheeses. (vegan) 5.00€",
-        "� Antipasti assortment - Assortment of the best Italian cold cuts, Aura cheese and garlic focaccia bread. (Lactose-free) 9.00€"
+        "Valkosipulileipää ja juustolajitelma - Tuoretta rapeaa focaccia leipää ja italialaisia juustoja. (vegaaninen) 5.00€",
+        "Antipasti lajitelma - Lajitelma parhaita italialaisia leikkeleitä, Aura-juustoa sekä valkosipuli focaccia-leipää. (Laktoositon) 9.00€"
     };
 
     private int currentAppetizerIndex = 0;
@@ -19,13 +19,20 @@ public class Appetizers : MonoBehaviour
     // Call this method to order the currently displayed appetizer
     public void OrderCurrentAppetizer()
     {
-        if (shoppingcart != null)
+        OrderAppetizerByIndex(currentAppetizerIndex);
+    }
+
+    // Call this from UI to add a specific appetizer by index
+    public void OrderAppetizerByIndex(int index)
+    {
+        if (shoppingcart != null && index >= 0 && index < appetizerList.Length)
         {
             Shoppingcart cartScript = shoppingcart.GetComponent<Shoppingcart>();
             if (cartScript != null)
             {
-                string item = appetizerList[currentAppetizerIndex];
+                string item = appetizerList[index];
                 cartScript.AddItem(item);
+                Debug.Log($"Added appetizer: {item}");
             }
         }
     }
@@ -43,6 +50,7 @@ public class Appetizers : MonoBehaviour
     public void OnAppetizerTextClicked()
     {
         OrderCurrentAppetizer();
+        Debug.Log(appetizerList[0]);
     }
 
     // This method is called when the button is pressed

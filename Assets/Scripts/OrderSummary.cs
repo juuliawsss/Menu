@@ -10,6 +10,8 @@ public class OrderSummary : MonoBehaviour
     {
         // Get the ordered items from Shoppingcart (using a static/shared list for simplicity)
         List<string> items = Shoppingcart.OrderedItems;
+        Debug.Log($"OrderSummary Start: Found {items?.Count ?? 0} items in OrderedItems");
+        
         if (items != null && items.Count > 0)
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
@@ -17,6 +19,7 @@ public class OrderSummary : MonoBehaviour
             sb.AppendLine(""); // Empty line for better formatting
             foreach (var item in items)
             {
+                Debug.Log($"Processing item: {item}");
                 // Remove any unsupported or control characters
                 string cleanItem = System.Text.RegularExpressions.Regex.Replace(item, "[^\u0020-\u007E€]", "");
                 sb.AppendLine(cleanItem.Trim());
@@ -26,6 +29,7 @@ public class OrderSummary : MonoBehaviour
         }
         else
         {
+            Debug.Log("OrderSummary: Cart is empty or null");
             orderText.text = "Your cart is empty.";
         }
     }

@@ -55,9 +55,27 @@ public class Shoppingcart : MonoBehaviour
     // Call this from a UI button to load OrderSummary scene
     public void OnShoppingcartButtonPressed()
     {
+        Debug.Log($"OnShoppingcartButtonPressed: Cart has {cartItems.Count} items");
+        foreach (var item in cartItems)
+        {
+            Debug.Log($"Cart item: {item}");
+        }
+        
         OrderedItems = new List<string>(cartItems);
+        Debug.Log($"OrderedItems now has {OrderedItems.Count} items");
+        
         UnityEngine.SceneManagement.SceneManager.LoadScene("OrderSummary");
     }
 
     public static List<string> OrderedItems = new List<string>();
+    
+    void Awake()
+    {
+        // Ensure OrderedItems is initialized
+        if (OrderedItems == null)
+        {
+            OrderedItems = new List<string>();
+            Debug.Log("OrderedItems initialized in Awake");
+        }
+    }
 }

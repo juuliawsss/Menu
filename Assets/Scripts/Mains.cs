@@ -9,6 +9,9 @@ public class Mains : MonoBehaviour
     public void OnPizzaQuattroStagioneClicked()
     {
         Debug.Log(pizzaQuattroStagione);
+        // Set this as the current menu item for the dropdown
+        Dropdown.SetCurrentMenuItem(pizzaQuattroStagione);
+        
         // Add item to cart using the dropdown component
         var dropdownObj = GameObject.FindFirstObjectByType<Dropdown>();
         if (dropdownObj != null)
@@ -46,6 +49,9 @@ public class Mains : MonoBehaviour
     public void OnPastaBologneseClicked()
     {
         Debug.Log(pastaBolognese);
+        // Set this as the current menu item for the dropdown
+        Dropdown.SetCurrentMenuItem(pastaBolognese);
+        
         // Add item to cart using the dropdown component
         var dropdownObj = GameObject.FindFirstObjectByType<Dropdown>();
         if (dropdownObj != null)

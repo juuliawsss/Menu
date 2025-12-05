@@ -4,6 +4,7 @@ public class Dropdown : MonoBehaviour
 {
     public static int Amount = 1;
     public static string SelectedItem = "";
+    public static string CurrentMenuItem = "Pasta Bolognese - Spagettia, bolognesekastiketta ja parmesaanilastuja. (Laktoositon, vegaaninen) 15.00€"; // Default item
 
     // Call this from a UI input field or dropdown to set the amount
     public void SetAmount(string value)
@@ -12,6 +13,22 @@ public class Dropdown : MonoBehaviour
         {
             Amount = result;
             Debug.Log($"Amount set to: {Amount}");
+            
+            // Automatically add the current menu item
+            var cartObj = GameObject.FindFirstObjectByType<Shoppingcart>();
+            if (cartObj != null)
+            {
+                Debug.Log($"Adding current menu item to cart: {CurrentMenuItem}");
+                cartObj.AddItem(CurrentMenuItem);
+                
+                // Go directly to OrderSummary
+                Debug.Log("Going to OrderSummary");
+                cartObj.OnShoppingcartButtonPressed();
+            }
+            else
+            {
+                Debug.LogWarning("Shoppingcart object not found.");
+            }
         }
         else
         {
@@ -19,13 +36,22 @@ public class Dropdown : MonoBehaviour
         }
     }
 
+    // Call this method to set which menu item will be added when amount is selected
+    public static void SetCurrentMenuItem(string menuItem)
+    {
+        CurrentMenuItem = menuItem;
+        Debug.Log($"Current menu item set to: {menuItem}");
+    }
+
     // Call this method to add the currently selected item with the chosen amount to cart
     public void AddItemToCart(string itemName)
     {
         SelectedItem = itemName;
+        Debug.Log($"Dropdown AddItemToCart called with: {itemName}, Amount: {Amount}");
         var cartObj = GameObject.FindFirstObjectByType<Shoppingcart>();
         if (cartObj != null)
         {
+            Debug.Log("Found Shoppingcart object, calling AddItem");
             cartObj.AddItem(itemName);
             Debug.Log($"Added {itemName} x{Amount} to cart");
         }

@@ -14,12 +14,13 @@ public class OrderSummary : MonoBehaviour
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
             sb.AppendLine("Your Order:");
-            sb.AppendLine($"Amount: {Dropdown.Amount}");
+            sb.AppendLine(""); // Empty line for better formatting
             foreach (var item in items)
             {
                 // Remove any unsupported or control characters
                 string cleanItem = System.Text.RegularExpressions.Regex.Replace(item, "[^\u0020-\u007E€]", "");
                 sb.AppendLine(cleanItem.Trim());
+                sb.AppendLine(""); // Empty line between items
             }
             orderText.text = sb.ToString();
         }

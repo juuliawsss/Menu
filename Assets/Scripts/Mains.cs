@@ -10,7 +10,7 @@ public class Mains : MonoBehaviour
     {
         Debug.Log(pizzaQuattroStagione);
         // Only set the current menu item for the dropdown
-        Dropdown.SetCurrentMenuItem(pizzaQuattroStagione);
+        OrderDropdown.SetCurrentMenuItem(pizzaQuattroStagione);
     }
 
     void Start()
@@ -34,13 +34,13 @@ public class Mains : MonoBehaviour
     {
         Debug.Log(pastaBolognese);
         // Only set the current menu item for the dropdown
-        Dropdown.SetCurrentMenuItem(pastaBolognese);
+        OrderDropdown.SetCurrentMenuItem(pastaBolognese);
     }
 
     // Call this method to navigate to the order summary
     public void GoToOrderSummary()
     {
-        var dropdownObj = GameObject.FindFirstObjectByType<Dropdown>();
+        var dropdownObj = GameObject.FindFirstObjectByType<OrderDropdown>();
         if (dropdownObj != null)
         {
             dropdownObj.GoToOrderSummary();

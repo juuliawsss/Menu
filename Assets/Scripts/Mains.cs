@@ -9,24 +9,8 @@ public class Mains : MonoBehaviour
     public void OnPizzaQuattroStagioneClicked()
     {
         Debug.Log(pizzaQuattroStagione);
-        // Set this as the current menu item for the dropdown
+        // Only set the current menu item for the dropdown
         Dropdown.SetCurrentMenuItem(pizzaQuattroStagione);
-        
-        // Add item to cart using the dropdown component
-        var dropdownObj = GameObject.FindFirstObjectByType<Dropdown>();
-        if (dropdownObj != null)
-        {
-            dropdownObj.AddItemToCart(pizzaQuattroStagione);
-        }
-        else
-        {
-            // Fallback: add directly to cart
-            var cartObj = GameObject.FindFirstObjectByType<Shoppingcart>();
-            if (cartObj != null)
-            {
-                cartObj.AddItem(pizzaQuattroStagione);
-            }
-        }
     }
 
     void Start()
@@ -49,24 +33,8 @@ public class Mains : MonoBehaviour
     public void OnPastaBologneseClicked()
     {
         Debug.Log(pastaBolognese);
-        // Set this as the current menu item for the dropdown
+        // Only set the current menu item for the dropdown
         Dropdown.SetCurrentMenuItem(pastaBolognese);
-        
-        // Add item to cart using the dropdown component
-        var dropdownObj = GameObject.FindFirstObjectByType<Dropdown>();
-        if (dropdownObj != null)
-        {
-            dropdownObj.AddItemToCart(pastaBolognese);
-        }
-        else
-        {
-            // Fallback: add directly to cart
-            var cartObj = GameObject.FindFirstObjectByType<Shoppingcart>();
-            if (cartObj != null)
-            {
-                cartObj.AddItem(pastaBolognese);
-            }
-        }
     }
 
     // Call this method to navigate to the order summary

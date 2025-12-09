@@ -1,3 +1,4 @@
+using System.Globalization;
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
@@ -17,6 +18,8 @@ public class OrderSummary : MonoBehaviour
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
             sb.AppendLine("Your Order:");
             sb.AppendLine(""); // Empty line for better formatting
+
+            float total = 0f;
             foreach (var item in items)
             {
                 Debug.Log($"Processing item: {item}");
@@ -24,7 +27,36 @@ public class OrderSummary : MonoBehaviour
                 string cleanItem = System.Text.RegularExpressions.Regex.Replace(item, "[^\u0020-\u007E€]", "");
                 sb.AppendLine(cleanItem.Trim());
                 sb.AppendLine(""); // Empty line between items
+
+                // Try to extract price and amount
+                float price = 0f;
+                int amount = 1;
+                // Find price (e.g., 15.00€)
+                var priceMatch = System.Text.RegularExpressions.Regex.Match(cleanItem, @"(\d+[\.,]\d{2})€");
+                if (priceMatch.Success)
+                {
+                    Debug.Log($"Price match: {priceMatch.Groups[1].Value}");
+                    float.TryParse(priceMatch.Groups[1].Value.Replace(',', '.'), NumberStyles.Any, CultureInfo.InvariantCulture, out price);
+                }
+                else
+                {
+                    Debug.LogWarning($"No price found in: {cleanItem}");
+                }
+                // Find amount (e.g., x2)
+                var amountMatch = System.Text.RegularExpressions.Regex.Match(cleanItem, @"x(\d+)");
+                if (amountMatch.Success)
+                {
+                    Debug.Log($"Amount match: {amountMatch.Groups[1].Value}");
+                    int.TryParse(amountMatch.Groups[1].Value, out amount);
+                }
+                else
+                {
+                    Debug.Log($"No amount found in: {cleanItem}, defaulting to 1");
+                }
+                Debug.Log($"Adding to total: {price} * {amount} = {price * amount}");
+                total += price * amount;
             }
+            sb.AppendLine($"Total: {total:0.00}€");
             orderText.text = sb.ToString();
         }
         else

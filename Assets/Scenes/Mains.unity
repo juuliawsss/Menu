@@ -1396,17 +1396,17 @@ RectTransform:
   m_GameObject: {fileID: 861012866}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.45072168, y: 0.45072168, z: 0.45072168}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 924304820}
   - {fileID: 590632759}
   - {fileID: 1195611492}
-  m_Father: {fileID: 1094274338}
+  m_Father: {fileID: 1460062876}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 191.7, y: 3.8311157}
+  m_AnchoredPosition: {x: 145.21788, y: 8.199982}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &861012868
@@ -1495,7 +1495,20 @@ MonoBehaviour:
       m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 861012868}
+        m_TargetAssemblyTypeName: Dropdown, Assembly-CSharp
+        m_MethodName: AddItemToCart
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: "Pasta Bolognese - Spagettia, bolognesekastiketta ja
+            parmesaanilastuja. (Laktoositon, vegaaninen) 15.00\u20AC "
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &861012870
 MonoBehaviour:
@@ -1773,7 +1786,6 @@ RectTransform:
   - {fileID: 2009614656}
   - {fileID: 1460062876}
   - {fileID: 1550408126}
-  - {fileID: 1261590920}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1887,8 +1899,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.2186642, y: 2.2186642, z: 2.2186642}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 861012867}
+  m_Children: []
   m_Father: {fileID: 1018248961}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2555,7 +2566,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1261590919}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2563,11 +2574,11 @@ RectTransform:
   - {fileID: 671532908}
   - {fileID: 499303640}
   - {fileID: 320904586}
-  m_Father: {fileID: 1018248961}
+  m_Father: {fileID: 1550408126}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 196, y: -87}
+  m_AnchoredPosition: {x: 173, y: 10}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1261590921
@@ -2656,7 +2667,20 @@ MonoBehaviour:
       m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1261590921}
+        m_TargetAssemblyTypeName: Dropdown, Assembly-CSharp
+        m_MethodName: AddItemToCart
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: "Pizza, Quattro Stagione - Kinkkua, katkarapuja, tonnikalaa
+            ja tuoreita herkkusieni\xE4. (Laktoositon) 15.00\u20AC "
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &1261590923
 MonoBehaviour:
@@ -2894,7 +2918,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 861012867}
   m_Father: {fileID: 1018248961}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3030,7 +3055,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1261590920}
   m_Father: {fileID: 1018248961}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}

@@ -62,7 +62,7 @@ public class OrderSummary : MonoBehaviour
                 Debug.Log($"Adding to total: {price} * {amount} = {price * amount}");
                 total += price * amount;
             }
-            sb.AppendLine($"<size=120%><b>Total: {total:0.00}€</b></size>");
+            sb.AppendLine($"<size=90%><b>Total: {total:0.00}€</b></size>");
             orderText.text = sb.ToString();
         }
         else

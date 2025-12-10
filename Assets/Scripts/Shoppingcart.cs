@@ -9,19 +9,20 @@ public class Shoppingcart : MonoBehaviour
     // Add an item to the cart
     public void AddItem(string itemName)
     {
+        int amountToAdd = OrderDropdown.Amount;
         // For main dishes that support amount selection, add the amount
         if (itemName.Contains("Pasta Bolognese") || itemName.Contains("Pizza, Quattro Stagione"))
         {
-            string itemWithAmount = $"{itemName} x{Dropdown.Amount}";
+            string itemWithAmount = $"{itemName} x{amountToAdd}";
             cartItems.Add(itemWithAmount);
             Debug.Log($"Added {itemWithAmount} to cart.");
         }
         else
         {
             // For other items, check if we need to add amount from dropdown
-            if (Dropdown.Amount > 1)
+            if (amountToAdd > 1)
             {
-                string itemWithAmount = $"{itemName} x{Dropdown.Amount}";
+                string itemWithAmount = $"{itemName} x{amountToAdd}";
                 cartItems.Add(itemWithAmount);
                 Debug.Log($"Added {itemWithAmount} to cart.");
             }
@@ -31,6 +32,7 @@ public class Shoppingcart : MonoBehaviour
                 Debug.Log($"Added {itemName} to cart.");
             }
         }
+    // Do not reset amount here; user should control amount per item
     }
 
     // Place the order

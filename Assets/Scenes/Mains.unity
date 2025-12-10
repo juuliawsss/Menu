@@ -1379,9 +1379,9 @@ GameObject:
   - component: {fileID: 861012871}
   - component: {fileID: 861012870}
   - component: {fileID: 861012869}
-  - component: {fileID: 861012868}
+  - component: {fileID: 861012872}
   m_Layer: 5
-  m_Name: Dropdown
+  m_Name: BologneseDropdown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1396,31 +1396,19 @@ RectTransform:
   m_GameObject: {fileID: 861012866}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.45072168, y: 0.45072168, z: 0.45072168}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 924304820}
   - {fileID: 590632759}
   - {fileID: 1195611492}
-  m_Father: {fileID: 1094274338}
+  m_Father: {fileID: 1460062876}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 191.7, y: 3.8311157}
+  m_AnchoredPosition: {x: 145.2179, y: 8.200012}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &861012868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 861012866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa02e27d624d1b64d95b279afa803a77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Dropdown
 --- !u!114 &861012869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1495,7 +1483,20 @@ MonoBehaviour:
       m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 861012872}
+        m_TargetAssemblyTypeName: OrderDropdown, Assembly-CSharp
+        m_MethodName: AddItemToCart
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: "Pasta Bolognese - Spagettia, bolognesekastiketta ja
+            parmesaanilastuja. (Laktoositon, vegaaninen) 15.00\u20AC "
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &861012870
 MonoBehaviour:
@@ -1535,6 +1536,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 861012866}
   m_CullTransparentMesh: 1
+--- !u!114 &861012872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861012866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7104315635467dd41b03c5139e3aa7c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OrderDropdown
+  bologneseDropdown: {fileID: 861012869}
 --- !u!1 &924304819
 GameObject:
   m_ObjectHideFlags: 0
@@ -1773,7 +1787,6 @@ RectTransform:
   - {fileID: 2009614656}
   - {fileID: 1460062876}
   - {fileID: 1550408126}
-  - {fileID: 1261590920}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1867,7 +1880,6 @@ GameObject:
   - component: {fileID: 1094274338}
   - component: {fileID: 1094274340}
   - component: {fileID: 1094274339}
-  - component: {fileID: 1094274342}
   - component: {fileID: 1094274341}
   m_Layer: 5
   m_Name: Mainstext
@@ -1887,8 +1899,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.2186642, y: 2.2186642, z: 2.2186642}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 861012867}
+  m_Children: []
   m_Father: {fileID: 1018248961}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2008,35 +2019,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0980376e9988220459aa5ea4581c871b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Mains
---- !u!114 &1094274342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1094274337}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1094274337}
-          m_TargetAssemblyTypeName: 
-          m_MethodName: 
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &1136576997
 GameObject:
   m_ObjectHideFlags: 0
@@ -2540,9 +2522,9 @@ GameObject:
   - component: {fileID: 1261590924}
   - component: {fileID: 1261590923}
   - component: {fileID: 1261590922}
-  - component: {fileID: 1261590921}
+  - component: {fileID: 1261590925}
   m_Layer: 5
-  m_Name: Dropdown
+  m_Name: PizzaDropdown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2555,7 +2537,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1261590919}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2563,25 +2545,13 @@ RectTransform:
   - {fileID: 671532908}
   - {fileID: 499303640}
   - {fileID: 320904586}
-  m_Father: {fileID: 1018248961}
+  m_Father: {fileID: 1550408126}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 196, y: -87}
+  m_AnchoredPosition: {x: 173, y: 10}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1261590921
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1261590919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa02e27d624d1b64d95b279afa803a77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Dropdown
 --- !u!114 &1261590922
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2656,7 +2626,20 @@ MonoBehaviour:
       m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1261590925}
+        m_TargetAssemblyTypeName: OrderDropdown, Assembly-CSharp
+        m_MethodName: AddItemToCart
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: "Pizza, Quattro Stagione - Kinkkua, katkarapuja, tonnikalaa
+            ja tuoreita herkkusieni\xE4. (Laktoositon) 15.00\u20AC "
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &1261590923
 MonoBehaviour:
@@ -2696,6 +2679,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1261590919}
   m_CullTransparentMesh: 1
+--- !u!114 &1261590925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261590919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7104315635467dd41b03c5139e3aa7c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OrderDropdown
+  bologneseDropdown: {fileID: 1261590922}
 --- !u!1 &1321406550
 GameObject:
   m_ObjectHideFlags: 0
@@ -2894,7 +2890,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 861012867}
   m_Father: {fileID: 1018248961}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3030,7 +3027,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1261590920}
   m_Father: {fileID: 1018248961}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3171,7 +3169,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1580479060
@@ -3541,7 +3539,6 @@ GameObject:
   - component: {fileID: 2009614656}
   - component: {fileID: 2009614658}
   - component: {fileID: 2009614657}
-  - component: {fileID: 2009614660}
   - component: {fileID: 2009614659}
   m_Layer: 5
   m_Name: Mainstext2
@@ -3681,35 +3678,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0980376e9988220459aa5ea4581c871b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Mains
---- !u!114 &2009614660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2009614655}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 4
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2009614655}
-          m_TargetAssemblyTypeName: 
-          m_MethodName: 
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &2018480594
 GameObject:
   m_ObjectHideFlags: 0

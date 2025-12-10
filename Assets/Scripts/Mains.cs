@@ -9,24 +9,8 @@ public class Mains : MonoBehaviour
     public void OnPizzaQuattroStagioneClicked()
     {
         Debug.Log(pizzaQuattroStagione);
-        // Set this as the current menu item for the dropdown
-        Dropdown.SetCurrentMenuItem(pizzaQuattroStagione);
-        
-        // Add item to cart using the dropdown component
-        var dropdownObj = GameObject.FindFirstObjectByType<Dropdown>();
-        if (dropdownObj != null)
-        {
-            dropdownObj.AddItemToCart(pizzaQuattroStagione);
-        }
-        else
-        {
-            // Fallback: add directly to cart
-            var cartObj = GameObject.FindFirstObjectByType<Shoppingcart>();
-            if (cartObj != null)
-            {
-                cartObj.AddItem(pizzaQuattroStagione);
-            }
-        }
+        // Only set the current menu item for the dropdown
+        OrderDropdown.SetCurrentMenuItem(pizzaQuattroStagione);
     }
 
     void Start()
@@ -49,30 +33,14 @@ public class Mains : MonoBehaviour
     public void OnPastaBologneseClicked()
     {
         Debug.Log(pastaBolognese);
-        // Set this as the current menu item for the dropdown
-        Dropdown.SetCurrentMenuItem(pastaBolognese);
-        
-        // Add item to cart using the dropdown component
-        var dropdownObj = GameObject.FindFirstObjectByType<Dropdown>();
-        if (dropdownObj != null)
-        {
-            dropdownObj.AddItemToCart(pastaBolognese);
-        }
-        else
-        {
-            // Fallback: add directly to cart
-            var cartObj = GameObject.FindFirstObjectByType<Shoppingcart>();
-            if (cartObj != null)
-            {
-                cartObj.AddItem(pastaBolognese);
-            }
-        }
+        // Only set the current menu item for the dropdown
+        OrderDropdown.SetCurrentMenuItem(pastaBolognese);
     }
 
     // Call this method to navigate to the order summary
     public void GoToOrderSummary()
     {
-        var dropdownObj = GameObject.FindFirstObjectByType<Dropdown>();
+        var dropdownObj = GameObject.FindFirstObjectByType<OrderDropdown>();
         if (dropdownObj != null)
         {
             dropdownObj.GoToOrderSummary();

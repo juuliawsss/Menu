@@ -267,6 +267,7 @@ GameObject:
   - component: {fileID: 299505804}
   - component: {fileID: 299505803}
   - component: {fileID: 299505802}
+  - component: {fileID: 299505805}
   m_Layer: 5
   m_Name: Dessert
   m_TagString: Untagged
@@ -337,7 +338,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 299505803}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 299505805}
+        m_TargetAssemblyTypeName: Dessert, Assembly-CSharp
+        m_MethodName: LoadDessertScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &299505803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,6 +389,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 299505800}
   m_CullTransparentMesh: 1
+--- !u!114 &299505805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299505800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa8286464e98e06409ee2d2d34bb528b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Dessert
+  shoppingcart: {fileID: 378327984}
 --- !u!1 &378327984
 GameObject:
   m_ObjectHideFlags: 0

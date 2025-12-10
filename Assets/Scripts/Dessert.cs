@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Dessert : MonoBehaviour
 {
@@ -43,5 +44,11 @@ public class Dessert : MonoBehaviour
         {
             Debug.LogWarning("Shoppingcart reference not set in Dessert.cs");
         }
+    }
+
+    // Call this method to load the Dessert scene
+    public void LoadDessertScene()
+    {
+        SceneManager.LoadScene("Dessert");
     }
 }

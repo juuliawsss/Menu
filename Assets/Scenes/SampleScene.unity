@@ -401,7 +401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa8286464e98e06409ee2d2d34bb528b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Dessert
-  shoppingcart: {fileID: 378327984}
+  shoppingcart: {fileID: 0}
 --- !u!1 &378327984
 GameObject:
   m_ObjectHideFlags: 0
@@ -842,7 +842,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Appetizers
   appetizerButton: {fileID: 469405432}
   appetizerText: {fileID: 0}
-  shoppingcart: {fileID: 378327984}
+  shoppingcart: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

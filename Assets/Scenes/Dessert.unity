@@ -241,7 +241,6 @@ GameObject:
   - component: {fileID: 50300552}
   - component: {fileID: 50300554}
   - component: {fileID: 50300553}
-  - component: {fileID: 50300555}
   m_Layer: 5
   m_Name: Kakkutext
   m_TagString: Untagged
@@ -367,19 +366,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 50300551}
   m_CullTransparentMesh: 1
---- !u!114 &50300555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 50300551}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa8286464e98e06409ee2d2d34bb528b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Dessert
-  shoppingcart: {fileID: 882404109}
 --- !u!1 &69275974
 GameObject:
   m_ObjectHideFlags: 0
@@ -1423,7 +1409,7 @@ GameObject:
   - component: {fileID: 360761617}
   - component: {fileID: 360761616}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Kakku
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2252,7 +2238,6 @@ GameObject:
   - component: {fileID: 646168025}
   - component: {fileID: 646168027}
   - component: {fileID: 646168026}
-  - component: {fileID: 646168028}
   m_Layer: 5
   m_Name: Gelatotext
   m_TagString: Untagged
@@ -2378,19 +2363,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 646168024}
   m_CullTransparentMesh: 1
---- !u!114 &646168028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 646168024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa8286464e98e06409ee2d2d34bb528b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Dessert
-  shoppingcart: {fileID: 882404109}
 --- !u!1 &792211923
 GameObject:
   m_ObjectHideFlags: 0
@@ -3733,7 +3705,6 @@ GameObject:
   - component: {fileID: 1078022456}
   - component: {fileID: 1078022458}
   - component: {fileID: 1078022457}
-  - component: {fileID: 1078022459}
   m_Layer: 5
   m_Name: Pannacottatext
   m_TagString: Untagged
@@ -3860,19 +3831,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1078022455}
   m_CullTransparentMesh: 1
---- !u!114 &1078022459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1078022455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa8286464e98e06409ee2d2d34bb528b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Dessert
-  shoppingcart: {fileID: 882404109}
 --- !u!1 &1164853445
 GameObject:
   m_ObjectHideFlags: 0
@@ -6844,7 +6802,6 @@ GameObject:
   - component: {fileID: 2064891893}
   - component: {fileID: 2064891895}
   - component: {fileID: 2064891894}
-  - component: {fileID: 2064891896}
   m_Layer: 5
   m_Name: Kahvitext
   m_TagString: Untagged
@@ -6970,19 +6927,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2064891892}
   m_CullTransparentMesh: 1
---- !u!114 &2064891896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2064891892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa8286464e98e06409ee2d2d34bb528b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Dessert
-  shoppingcart: {fileID: 882404109}
 --- !u!1 &2077119652
 GameObject:
   m_ObjectHideFlags: 0

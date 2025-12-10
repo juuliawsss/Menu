@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Dessert.unity
     guid: 3c9031e253a99e84e9cf6700677773b7
+  - enabled: 1
+    path: Assets/Scenes/Drinks.unity
+    guid: eaf3aa3128b116f49a6ca64fd68ed027
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

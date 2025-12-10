@@ -24,4 +24,19 @@ public class SceneSwitcher : MonoBehaviour
     {
         SceneManager.LoadScene("OrderSummary");
     }
+
+    public void SwitchToMains()
+    {
+        SceneManager.LoadScene("Mains");
+    }
+
+    public void SwitchToDesserts()
+    {
+        SceneManager.LoadScene("Dessert");
+    }
+
+    public void SwitchToDrinks()
+    {
+        SceneManager.LoadScene("Drinks");
+    }
 }

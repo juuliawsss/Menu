@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class Shoppingcart : MonoBehaviour
 {
+    public static Shoppingcart Instance { get; private set; }
     // List to store items in the cart
     private List<string> cartItems = new List<string>();
 
@@ -78,6 +79,13 @@ public class Shoppingcart : MonoBehaviour
     
     void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(this.gameObject);
         // Ensure OrderedItems is initialized
         if (OrderedItems == null)
         {

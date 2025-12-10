@@ -1,8 +1,21 @@
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 using System.Collections.Generic;
 
 public class DessertDropdown : MonoBehaviour
 {
+    // Assign these in the Inspector
+    public GameObject Kakkudropdown;
+    public GameObject PannacottaDropdown;
+    public GameObject KahviDropdown;
+    public GameObject JäätelöDropdown;
+    public TMP_Dropdown dessertAmountDropdown; // Assign in Inspector
+
+    public static int Amount = 1;
+    public static string SelectedDessert = "";
+    public static string CurrentDessert = "Pannacotta - Vaniljalla maustettua kermavanukasta ja granaattiomenakastiketta. (Gluteeniton, Laktoositon) 9.00€";
+
     // Dessert names and prices
     private Dictionary<string, float> dessertPrices = new Dictionary<string, float>()
     {
@@ -20,6 +33,64 @@ public class DessertDropdown : MonoBehaviour
         {"Italialainen tuorejuustokakku", 0},
         {"Gelato - Italialainen jäätelö, mansikka", 0}
     };
+
+    // Set the amount from dropdown or input
+    public void SetAmount(string value)
+    {
+        if (int.TryParse(value, out int result) && result > 0)
+        {
+            Amount = result;
+            Debug.Log($"Dessert Amount set to: {Amount}");
+        }
+        else
+        {
+            Debug.LogWarning("Invalid dessert amount entered.");
+        }
+    }
+
+    // Set the current dessert
+    public static void SetCurrentDessert(string dessert)
+    {
+        CurrentDessert = dessert;
+        Debug.Log($"Current dessert set to: {dessert}");
+    }
+
+    // Add the selected dessert and amount to the cart
+    public void AddDessertToCart(string dessertName)
+    {
+        SelectedDessert = dessertName;
+        Debug.Log($"Dropdown AddDessertToCart called with: {dessertName}, Amount: {Amount}");
+        var cartObj = GameObject.FindFirstObjectByType<Shoppingcart>();
+        if (cartObj != null)
+        {
+            cartObj.AddItem(dessertName + (Amount > 1 ? $" x{Amount}" : ""));
+            Debug.Log($"Added {dessertName} x{Amount} to cart");
+        }
+        else
+        {
+            Debug.LogWarning("Shoppingcart object not found.");
+        }
+    }
+
+    // Go to order summary
+    public void GoToOrderSummary()
+    {
+        var cartObj = GameObject.FindFirstObjectByType<Shoppingcart>();
+        if (cartObj != null)
+        {
+            cartObj.OnShoppingcartButtonPressed();
+        }
+        else
+        {
+            Debug.LogWarning("Shoppingcart object not found.");
+        }
+    }
+
+    // Optionally, get the current amount
+    public int GetAmount()
+    {
+        return Amount;
+    }
 
     // Call this to add one to a dessert
     public void AddDessert(string dessertName)
@@ -67,7 +138,12 @@ public class DessertDropdown : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        if (dessertAmountDropdown != null)
+        {
+            dessertAmountDropdown.onValueChanged.AddListener(delegate {
+                SetAmount(dessertAmountDropdown.options[dessertAmountDropdown.value].text);
+            });
+        }
     }
 
     // Update is called once per frame

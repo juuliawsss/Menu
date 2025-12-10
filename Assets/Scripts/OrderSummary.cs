@@ -9,9 +9,15 @@ public class OrderSummary : MonoBehaviour
 
     void Start()
     {
+        UpdateOrderSummary();
+    }
+
+    // Call this to update the order summary text at any time
+    public void UpdateOrderSummary()
+    {
         // Get the ordered items from Shoppingcart (using a static/shared list for simplicity)
         List<string> items = Shoppingcart.OrderedItems;
-        Debug.Log($"OrderSummary Start: Found {items?.Count ?? 0} items in OrderedItems");
+        Debug.Log($"OrderSummary Update: Found {items?.Count ?? 0} items in OrderedItems");
         
         if (items != null && items.Count > 0)
         {

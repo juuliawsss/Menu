@@ -10,7 +10,6 @@ public class DessertDropdown : MonoBehaviour
     public GameObject PannacottaDropdown;
     public GameObject KahviDropdown;
     public GameObject JäätelöDropdown;
-    public TMP_Dropdown dessertAmountDropdown; // Assign in Inspector
 
     public static int Amount = 1;
     public static string SelectedDessert = "";
@@ -34,12 +33,12 @@ public class DessertDropdown : MonoBehaviour
         {"Gelato - Italialainen jäätelö, mansikka", 0}
     };
 
-    // Set the amount from dropdown or input
-    public void SetAmount(string value)
+    // Set the amount from UI or code
+    public void SetAmount(int value)
     {
-        if (int.TryParse(value, out int result) && result > 0)
+        if (value > 0)
         {
-            Amount = result;
+            Amount = value;
             Debug.Log($"Dessert Amount set to: {Amount}");
         }
         else
@@ -63,7 +62,7 @@ public class DessertDropdown : MonoBehaviour
         var cartObj = GameObject.FindFirstObjectByType<Shoppingcart>();
         if (cartObj != null)
         {
-            cartObj.AddItem(dessertName + (Amount > 1 ? $" x{Amount}" : ""));
+            cartObj.AddItem(dessertName + $" x{Amount}");
             Debug.Log($"Added {dessertName} x{Amount} to cart");
         }
         else
@@ -138,17 +137,19 @@ public class DessertDropdown : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (dessertAmountDropdown != null)
-        {
-            dessertAmountDropdown.onValueChanged.AddListener(delegate {
-                SetAmount(dessertAmountDropdown.options[dessertAmountDropdown.value].text);
-            });
-        }
+        // No dropdown logic needed
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void OnAddDessertButtonClicked(string dessertName, int amount)
+    {
+        SetCurrentDessert(dessertName);
+        SetAmount(amount);
+        AddDessertToCart(dessertName);
     }
 }

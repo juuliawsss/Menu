@@ -24,7 +24,7 @@ public class DessertDropdown : MonoBehaviour
         {"Gelato - Italialainen jäätelö, mansikka", 6.00f}
     };
 
-    // Dessert counts
+    // Add this dictionary to track dessert counts
     private Dictionary<string, int> dessertCounts = new Dictionary<string, int>()
     {
         {"Pannacotta - Vaniljalla maustettua kermavanukasta ja granaattiomenakastiketta. (Gluteeniton, Laktoositon)", 0},

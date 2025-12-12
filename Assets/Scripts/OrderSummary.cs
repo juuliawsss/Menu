@@ -30,7 +30,7 @@ public class OrderSummary : MonoBehaviour
             {
                 Debug.Log($"Processing item: {item}");
                 // Remove any unsupported or control characters
-                string cleanItem = System.Text.RegularExpressions.Regex.Replace(item, "[^\u0020-\u007E€]", "");
+                string cleanItem = System.Text.RegularExpressions.Regex.Replace(item, @"[^\p{L}\p{N}\p{P}\p{Z}€]", "");
                 sb.AppendLine(cleanItem.Trim());
                 sb.AppendLine(""); // Empty line between items
 

@@ -715,6 +715,7 @@ RectTransform:
   - {fileID: 1801812562}
   - {fileID: 368318985}
   - {fileID: 833956520}
+  - {fileID: 1189871180}
   m_Father: {fileID: 287967876}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -799,7 +800,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 214914419}
         m_TargetAssemblyTypeName: DrinksDropdown, Assembly-CSharp
-        m_MethodName: AddItemToCart
+        m_MethodName: AddToCart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -860,6 +861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ce5330987148c84e8f7717014fd8ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DrinksDropdown
+  dropdown: {fileID: 214914415}
 --- !u!1 &265316009
 GameObject:
   m_ObjectHideFlags: 0
@@ -1122,10 +1124,6 @@ RectTransform:
   - {fileID: 1431014227}
   - {fileID: 1712934614}
   - {fileID: 1140203228}
-  - {fileID: 1189871180}
-  - {fileID: 1112663256}
-  - {fileID: 1693518092}
-  - {fileID: 1843206334}
   - {fileID: 214914413}
   - {fileID: 1527956157}
   - {fileID: 970222766}
@@ -2264,7 +2262,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Cart
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2291,10 +2289,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
+  m_fontSize: 26.85
   m_fontSizeBase: 24
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -3065,6 +3063,7 @@ RectTransform:
   - {fileID: 874284987}
   - {fileID: 1144055461}
   - {fileID: 1271210614}
+  - {fileID: 1843206334}
   m_Father: {fileID: 287967876}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3149,7 +3148,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 970222770}
         m_TargetAssemblyTypeName: DrinksDropdown, Assembly-CSharp
-        m_MethodName: AddItemToCart
+        m_MethodName: AddToCart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3210,6 +3209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ce5330987148c84e8f7717014fd8ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DrinksDropdown
+  dropdown: {fileID: 970222767}
 --- !u!1 &984780791
 GameObject:
   m_ObjectHideFlags: 0
@@ -3468,6 +3468,7 @@ GameObject:
   - component: {fileID: 1112663256}
   - component: {fileID: 1112663258}
   - component: {fileID: 1112663257}
+  - component: {fileID: 1112663259}
   m_Layer: 5
   m_Name: Wwtext
   m_TagString: Untagged
@@ -3482,16 +3483,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1112663255}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 287967876}
+  m_Father: {fileID: 1527956157}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -244, y: -102}
+  m_AnchoredPosition: {x: -205.20001, y: -14}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1112663257
@@ -3593,6 +3594,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1112663255}
   m_CullTransparentMesh: 1
+--- !u!114 &1112663259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112663255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f4791829ec1e7248804d94c9ed7bb39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Drinks
 --- !u!1 &1135910718
 GameObject:
   m_ObjectHideFlags: 0
@@ -3844,6 +3857,7 @@ GameObject:
   - component: {fileID: 1189871180}
   - component: {fileID: 1189871182}
   - component: {fileID: 1189871181}
+  - component: {fileID: 1189871183}
   m_Layer: 5
   m_Name: Rwtext
   m_TagString: Untagged
@@ -3858,16 +3872,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1189871179}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 287967876}
+  m_Father: {fileID: 214914413}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -244, y: 72}
+  m_AnchoredPosition: {x: -205.20001, y: -5.600006}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1189871181
@@ -3969,6 +3983,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1189871179}
   m_CullTransparentMesh: 1
+--- !u!114 &1189871183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189871179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f4791829ec1e7248804d94c9ed7bb39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Drinks
 --- !u!1 &1222089375
 GameObject:
   m_ObjectHideFlags: 0
@@ -4974,6 +5000,7 @@ RectTransform:
   - {fileID: 476573427}
   - {fileID: 1325966400}
   - {fileID: 1607643990}
+  - {fileID: 1112663256}
   m_Father: {fileID: 287967876}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -5058,7 +5085,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1527956161}
         m_TargetAssemblyTypeName: DrinksDropdown, Assembly-CSharp
-        m_MethodName: AddItemToCart
+        m_MethodName: AddToCart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5119,6 +5146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ce5330987148c84e8f7717014fd8ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DrinksDropdown
+  dropdown: {fileID: 1527956158}
 --- !u!1 &1541420904
 GameObject:
   m_ObjectHideFlags: 0
@@ -5574,6 +5602,7 @@ GameObject:
   - component: {fileID: 1693518092}
   - component: {fileID: 1693518094}
   - component: {fileID: 1693518093}
+  - component: {fileID: 1693518095}
   m_Layer: 5
   m_Name: Colatext
   m_TagString: Untagged
@@ -5588,16 +5617,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1693518091}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 287967876}
+  m_Father: {fileID: 2027206868}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 251, y: -102}
+  m_AnchoredPosition: {x: -158, y: -7}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1693518093
@@ -5699,6 +5728,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1693518091}
   m_CullTransparentMesh: 1
+--- !u!114 &1693518095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693518091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f4791829ec1e7248804d94c9ed7bb39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Drinks
 --- !u!1 &1712934613
 GameObject:
   m_ObjectHideFlags: 0
@@ -6000,6 +6041,7 @@ GameObject:
   - component: {fileID: 1843206334}
   - component: {fileID: 1843206336}
   - component: {fileID: 1843206335}
+  - component: {fileID: 1843206337}
   m_Layer: 5
   m_Name: Beertext
   m_TagString: Untagged
@@ -6014,16 +6056,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1843206333}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 287967876}
+  m_Father: {fileID: 970222766}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 251, y: 94}
+  m_AnchoredPosition: {x: -190, y: -11}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1843206335
@@ -6125,6 +6167,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1843206333}
   m_CullTransparentMesh: 1
+--- !u!114 &1843206337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843206333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f4791829ec1e7248804d94c9ed7bb39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Drinks
 --- !u!1 &1892688397
 GameObject:
   m_ObjectHideFlags: 0
@@ -6407,6 +6461,7 @@ RectTransform:
   - {fileID: 491464032}
   - {fileID: 487713226}
   - {fileID: 293089378}
+  - {fileID: 1693518092}
   m_Father: {fileID: 287967876}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -6491,7 +6546,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2027206872}
         m_TargetAssemblyTypeName: DrinksDropdown, Assembly-CSharp
-        m_MethodName: AddItemToCart
+        m_MethodName: AddToCart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6552,6 +6607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ce5330987148c84e8f7717014fd8ccf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DrinksDropdown
+  dropdown: {fileID: 2027206869}
 --- !u!1 &2058444205
 GameObject:
   m_ObjectHideFlags: 0

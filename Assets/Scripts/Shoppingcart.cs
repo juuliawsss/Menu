@@ -81,16 +81,10 @@ public class Shoppingcart : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
             return;
         }
         Instance = this;
-        DontDestroyOnLoad(this.gameObject);
-        // Ensure OrderedItems is initialized
-        if (OrderedItems == null)
-        {
-            OrderedItems = new List<string>();
-            Debug.Log("OrderedItems initialized in Awake");
-        }
+        DontDestroyOnLoad(gameObject);
     }
 }

@@ -1,13 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using TMPro; // Add this line for TextMeshProUGUI
 
 public class DrinksDropdown : MonoBehaviour
 {
     private Dropdown dropdown;
     private Drinks drinksSource;
     private int selectedIndex = 0;
-    public Button orderButton; // Assign in Inspector
 
     void Start()
     {
@@ -21,9 +21,10 @@ public class DrinksDropdown : MonoBehaviour
         }
 
         List<string> options = new List<string>();
-        if (drinksSource != null && drinksSource.drinkItems != null)
+        var drinksList = drinksSource != null ? drinksSource.GetDrinks() : null;
+        if (drinksList != null)
         {
-            foreach (var drink in drinksSource.drinkItems)
+            foreach (var drink in drinksList)
             {
                 options.Add($"{drink.name} {drink.price:F2}€");
             }
@@ -38,10 +39,6 @@ public class DrinksDropdown : MonoBehaviour
             dropdown.AddOptions(options);
             dropdown.onValueChanged.AddListener(OnDropdownValueChanged);
         }
-        if (orderButton != null)
-        {
-            orderButton.onClick.AddListener(OnOrderButtonClicked);
-        }
     }
 
     void OnDropdownValueChanged(int index)
@@ -50,14 +47,16 @@ public class DrinksDropdown : MonoBehaviour
         Debug.Log("Selected drink: " + dropdown.options[index].text);
     }
 
-    void OnOrderButtonClicked()
+    // This method can be assigned in the Inspector to add the currently selected drink to the cart
+    public void AddItemToCart()
     {
-        if (drinksSource != null && drinksSource.drinkItems != null && selectedIndex < drinksSource.drinkItems.Count)
+        var drinksList = drinksSource != null ? drinksSource.GetDrinks() : null;
+        if (drinksList != null && selectedIndex < drinksList.Count)
         {
-            var drink = drinksSource.drinkItems[selectedIndex];
+            var drink = drinksList[selectedIndex];
             string item = $"{drink.name} {drink.price:F2}€";
             Shoppingcart.Instance.AddItem(item);
-            Debug.Log($"Added to cart: {item}");
+            Debug.Log($"Added to cart (Inspector): {item}");
         }
     }
 }

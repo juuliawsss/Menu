@@ -1,8 +1,20 @@
 using UnityEngine;
 
+
+
+using TMPro;
+
 public class DrinksDropdown : MonoBehaviour
 {
-    // Public methods for each drink to be called from UI (TextMeshPro or Button)
+    private int selectedAmount = 1;
+
+    // Call this from a UI button if you want to set the amount
+    public void SetAmount(int amount)
+    {
+        selectedAmount = Mathf.Clamp(amount, 1, 6);
+        Debug.Log($"Drink amount set to: {selectedAmount}");
+    }
+
     public void OnPunaviiniClicked()
     {
         AddDrinkToCart("Punaviini - 10.00€");
@@ -26,8 +38,14 @@ public class DrinksDropdown : MonoBehaviour
     // Helper to add a drink to the cart (one at a time)
     private void AddDrinkToCart(string drink)
     {
-        int selectedAmount = 1; // Default to 1, or get from your UI if needed
-        string item = $"{drink} x{selectedAmount}";
+        // Ensure format: DrinkName - 8.00€ xN
+        string item = drink.Trim();
+        int xIndex = item.LastIndexOf(" x");
+        if (xIndex > 0)
+        {
+            item = item.Substring(0, xIndex);
+        }
+        item = $"{item} x{selectedAmount}";
         Shoppingcart.Instance.AddItem(item);
         Debug.Log($"Added drink to cart: {item}");
     }

@@ -76,4 +76,34 @@ public class OrderSummary : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Appetizermenu");
     }
+
+    // Call this from your + button, passing the index of the item in the cart
+    public void IncreaseAmount(int itemIndex)
+    {
+        UpdateAmount(itemIndex, 1);
+    }
+
+    // Call this from your - button, passing the index of the item in the cart
+    public void DecreaseAmount(int itemIndex)
+    {
+        UpdateAmount(itemIndex, -1);
+    }
+
+    private void UpdateAmount(int itemIndex, int delta)
+    {
+        var items = Shoppingcart.OrderedItems;
+        if (itemIndex < 0 || itemIndex >= items.Count) return;
+
+        string item = items[itemIndex];
+        // Find and update the xN part
+        var match = System.Text.RegularExpressions.Regex.Match(item, @"^(.*?€) x(\d+)$");
+        if (match.Success)
+        {
+            string nameAndPrice = match.Groups[1].Value;
+            int amount = int.Parse(match.Groups[2].Value);
+            amount = Mathf.Clamp(amount + delta, 1, 99); // Prevent going below 1
+            items[itemIndex] = $"{nameAndPrice} x{amount}";
+            UpdateOrderSummary();
+        }
+    }
 }

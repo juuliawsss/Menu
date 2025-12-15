@@ -5,10 +5,9 @@ using System.Globalization;
 
 public class DrinksDropdown : MonoBehaviour
 {
-    [Header("UI")]
-    [SerializeField] private TMP_Dropdown drinksDropdown;
-    [SerializeField] private TMP_Dropdown amountDropdown;
-    [SerializeField] private TMP_Text totalText;
+    private TMP_Dropdown drinksDropdown;
+    private TMP_Dropdown amountDropdown;
+    private TMP_Text totalText;
 
     private Dictionary<int, float> drinkPrices = new Dictionary<int, float>
     {
@@ -20,6 +19,12 @@ public class DrinksDropdown : MonoBehaviour
 
     void Start()
     {
+        // Etsitään komponentit automaattisesti
+        drinksDropdown = GetComponent<TMP_Dropdown>();
+        amountDropdown = GetComponent<TMP_Dropdown>();
+
+    totalText = FindFirstObjectByType<TMP_Text>();
+
         SetupDrinksDropdown();
         SetupAmountDropdown();
 
@@ -42,6 +47,7 @@ public class DrinksDropdown : MonoBehaviour
         });
 
         drinksDropdown.value = 0;
+        drinksDropdown.RefreshShownValue();
     }
 
     private void SetupAmountDropdown()
@@ -49,14 +55,11 @@ public class DrinksDropdown : MonoBehaviour
         amountDropdown.ClearOptions();
         amountDropdown.AddOptions(new List<string>
         {
-            "x1",
-            "x2",
-            "x3",
-            "x4",
-            "x5"
+            "x1", "x2", "x3", "x4", "x5"
         });
 
         amountDropdown.value = 0;
+        amountDropdown.RefreshShownValue();
     }
 
     private void UpdateTotal()
@@ -73,23 +76,24 @@ public class DrinksDropdown : MonoBehaviour
         float total = drinkPrices[drinkIndex] * amount;
         totalText.text = $"Total: {total.ToString("F2", CultureInfo.InvariantCulture)}€";
 
-        Debug.Log($"Selected: {drinksDropdown.options[drinkIndex].text} x{amount} = {total}€");
+        Debug.Log($"{drinksDropdown.options[drinkIndex].text} x{amount} = {total:F2}€");
     }
 
-    // Kutsu tätä nappulasta: "Lisää ostoskoriin"
+    // Kutsu tätä nappulasta
     public void AddToCart()
     {
         int drinkIndex = drinksDropdown.value;
         if (drinkIndex == 0) return;
 
         int amount = amountDropdown.value + 1;
-        string drinkName = drinksDropdown.options[drinkIndex].text;
         float total = drinkPrices[drinkIndex] * amount;
 
-        string item = $"{drinkName} x{amount} - {total:F2}€";
+        string item =
+            $"{drinksDropdown.options[drinkIndex].text} x{amount} - {total:F2}€";
 
         Shoppingcart.Instance.AddItem(item);
         Debug.Log("Added to cart: " + item);
     }
 }
+
 

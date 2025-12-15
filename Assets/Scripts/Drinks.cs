@@ -1,69 +1,60 @@
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
-using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
-[System.Serializable]
-public class DrinkItem
+public class DrinksMenu : MonoBehaviour
 {
-    public string name;
-    public float price;
-    public Sprite image;
-    public bool isAvailable = true;
-}
+    private string punaviini = "Punaviini - 10.00€";
+    private string valkoviini = "Valkoviini - 10.00€";
+    private string peroni = "Peroni-olut - 8.00€";
+    private string cola = "Cola - 3.00€";
 
-public class Drinks : MonoBehaviour
-{
-    private List<DrinkItem> drinkItems = new List<DrinkItem>();
-    private DrinkItem selectedDrink;
+    // === JUOMIEN KLIKKAUKSET (SAMA KUIN MAINS) ===
 
-    void Start()
+    public void OnPunaviiniClicked()
     {
-        
+        Debug.Log(punaviini);
+        OrderDropdown.SetCurrentMenuItem(punaviini);
     }
 
-    void SetupDrinks()
+    public void OnValkoviiniClicked()
     {
-        if (drinkItems.Count == 0)
-        {
-            drinkItems.Add(new DrinkItem { name = "Punaviini", price = 10.00f });
-            drinkItems.Add(new DrinkItem { name = "Valkoviini", price = 10.00f });
-            drinkItems.Add(new DrinkItem { name = "Peroni-olut", price = 8.00f });
-            drinkItems.Add(new DrinkItem { name = "Cola", price = 3.00f });
-        }
+        Debug.Log(valkoviini);
+        OrderDropdown.SetCurrentMenuItem(valkoviini);
     }
 
-    // If you want to access the drinks from other scripts:
-    public List<DrinkItem> GetDrinks() => drinkItems;
-
-    public void SelectDrink(DrinkItem drink)
+    public void OnPeroniClicked()
     {
-        if (!drink.isAvailable) return;
-        selectedDrink = drink;
-        // Handle selection logic
+        Debug.Log(peroni);
+        OrderDropdown.SetCurrentMenuItem(peroni);
     }
 
-    public void OrderSelectedDrink()
+    public void OnColaClicked()
     {
-        if (selectedDrink == null) return;
-        Debug.Log($"Tilataan: {selectedDrink.name} hintaan {selectedDrink.price:F2}€");
-        // Handle order logic
+        Debug.Log(cola);
+        OrderDropdown.SetCurrentMenuItem(cola);
     }
 
-    public void GoBack()
-    {
-        Debug.Log("Paluu päävalikkoon");
-        // Handle back logic
-    }
-
-    void ResetSelection()
-    {
-        selectedDrink = null;
-        // Handle reset logic
-    }
+    // === SCENE NAVIGOINTI ===
 
     public void LoadDrinksScene()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Drinks");
+        SceneManager.LoadScene("Drinks");
+    }
+
+    public void GoToOrderSummary()
+    {
+        var dropdownObj = GameObject.FindFirstObjectByType<OrderDropdown>();
+        if (dropdownObj != null)
+        {
+            dropdownObj.GoToOrderSummary();
+        }
+        else
+        {
+            var cartObj = GameObject.FindFirstObjectByType<Shoppingcart>();
+            if (cartObj != null)
+            {
+                cartObj.OnShoppingcartButtonPressed();
+            }
+        }
     }
 }

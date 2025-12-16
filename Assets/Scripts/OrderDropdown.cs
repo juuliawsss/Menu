@@ -2,12 +2,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+// Ensure a TMP_Dropdown exists on the same GameObject when intended
+[RequireComponent(typeof(TMP_Dropdown))]
 public class OrderDropdown : MonoBehaviour
 {
     public static int Amount = 1;
     public static string SelectedItem = "";
     public static string CurrentMenuItem = "Pasta Bolognese - Spagettia, bolognesekastiketta ja parmesaanilastuja. (Laktoositon, vegaaninen) 15.00€"; // Default item
-    public TMP_Dropdown bologneseDropdown;
+    [SerializeField]
+    private TMP_Dropdown bologneseDropdown;
 
     // Call this from a UI input field or dropdown to set the amount
     public void SetAmount(string value)
@@ -70,14 +73,10 @@ public class OrderDropdown : MonoBehaviour
 
     void Awake()
     {
-        // Auto-bind if not assigned in Inspector
+        // Bind to the TMP_Dropdown on the same GameObject by default
         if (bologneseDropdown == null)
         {
             bologneseDropdown = GetComponent<TMP_Dropdown>();
-            if (bologneseDropdown == null)
-            {
-                bologneseDropdown = GetComponentInChildren<TMP_Dropdown>(true);
-            }
         }
     }
 
@@ -92,6 +91,7 @@ public class OrderDropdown : MonoBehaviour
         else
         {
             Debug.LogError("OrderDropdown: bologneseDropdown is not assigned. Assign it in the Inspector or keep this script on the same GameObject as the TMP_Dropdown.");
+            enabled = false; // Prevent further null-reference use
         }
     }
 

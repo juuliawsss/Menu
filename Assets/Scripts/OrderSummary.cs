@@ -15,29 +15,26 @@ public class OrderSummary : MonoBehaviour
     // Call this to update the order summary text at any time
     public void UpdateOrderSummary()
     {
-        // Get the ordered items from Shoppingcart (using a static/shared list for simplicity)
         List<string> items = Shoppingcart.OrderedItems;
         Debug.Log($"OrderSummary Update: Found {items?.Count ?? 0} items in OrderedItems");
         
         if (items != null && items.Count > 0)
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            sb.Append("<size=90%>"); // make all order text slightly smaller
             sb.AppendLine("Your Order:");
-            sb.AppendLine(""); // Empty line for better formatting
+            sb.AppendLine("");
 
             float total = 0f;
             foreach (var item in items)
             {
                 Debug.Log($"Processing item: {item}");
-                // Remove any unsupported or control characters
                 string cleanItem = System.Text.RegularExpressions.Regex.Replace(item, @"[^\p{L}\p{N}\p{P}\p{Z}€]", "");
                 sb.AppendLine(cleanItem.Trim());
-                sb.AppendLine(""); // Empty line between items
+                sb.AppendLine("");
 
-                // Try to extract price and amount
                 float price = 0f;
                 int amount = 1;
-                // Find price (e.g., 15.00€)
                 var priceMatch = System.Text.RegularExpressions.Regex.Match(cleanItem, @"(\d+[\.,]\d{2})€");
                 if (priceMatch.Success)
                 {
@@ -48,7 +45,6 @@ public class OrderSummary : MonoBehaviour
                 {
                     Debug.LogWarning($"No price found in: {cleanItem}");
                 }
-                // Find amount (e.g., x2)
                 var amountMatch = System.Text.RegularExpressions.Regex.Match(cleanItem, @"x(\d+)");
                 if (amountMatch.Success)
                 {
@@ -62,7 +58,11 @@ public class OrderSummary : MonoBehaviour
                 Debug.Log($"Adding to total: {price} * {amount} = {price * amount}");
                 total += price * amount;
             }
-            sb.AppendLine($"<size=90%><b>Total: {total:0.00}€</b></size>");
+
+            // keep total readable without the extra 90% wrapper
+            sb.AppendLine($"<b>Total: {total:0.00}€</b>");
+            sb.Append("</size>");
+
             orderText.text = sb.ToString();
         }
         else

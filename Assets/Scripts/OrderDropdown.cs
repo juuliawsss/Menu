@@ -7,7 +7,7 @@ public class OrderDropdown : MonoBehaviour
     public static int Amount = 1;
     public static string SelectedItem = "";
     public static string CurrentMenuItem = "Pasta Bolognese - Spagettia, bolognesekastiketta ja parmesaanilastuja. (Laktoositon, vegaaninen) 15.00€"; // Default item
-    public TMPro.TMP_Dropdown bologneseDropdown;
+    public TMP_Dropdown bologneseDropdown;
 
     // Call this from a UI input field or dropdown to set the amount
     public void SetAmount(string value)
@@ -68,11 +68,37 @@ public class OrderDropdown : MonoBehaviour
         return Amount;
     }
 
+    void Awake()
+    {
+        // Auto-bind if not assigned in Inspector
+        if (bologneseDropdown == null)
+        {
+            bologneseDropdown = GetComponent<TMP_Dropdown>();
+            if (bologneseDropdown == null)
+            {
+                bologneseDropdown = GetComponentInChildren<TMP_Dropdown>(true);
+            }
+        }
+    }
+
     void Start()
     {
-        bologneseDropdown.onValueChanged.AddListener(delegate {
-            SetAmount(bologneseDropdown.options[bologneseDropdown.value].text);
-        });
+        if (bologneseDropdown != null)
+        {
+            bologneseDropdown.onValueChanged.AddListener(OnBologneseDropdownChanged);
+            // Initialize once so Amount matches current selection
+            OnBologneseDropdownChanged(bologneseDropdown.value);
+        }
+        else
+        {
+            Debug.LogError("OrderDropdown: bologneseDropdown is not assigned. Assign it in the Inspector or keep this script on the same GameObject as the TMP_Dropdown.");
+        }
+    }
+
+    private void OnBologneseDropdownChanged(int _)
+    {
+        var optText = bologneseDropdown.options[bologneseDropdown.value].text;
+        SetAmount(optText);
     }
 
     void Update()

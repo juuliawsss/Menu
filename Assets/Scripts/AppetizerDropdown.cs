@@ -90,7 +90,7 @@ public class AppetizerDropdown : MonoBehaviour
         }
 
         int amount = selectedAmount;
-        Debug.Log($"Appetizer local amount: {amount}, Global order amount: {OrderDropdown.Amount}");
+        Debug.Log($"Appetizer amount: {amount}");
         item = $"{item} x{amount}";
 
         var cart = EnsureCart();     // use the ensured cart

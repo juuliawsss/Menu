@@ -2,8 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-// Ensure a TMP_Dropdown exists on the same GameObject when intended
-[RequireComponent(typeof(TMP_Dropdown))]
 public class OrderDropdown : MonoBehaviour
 {
     public static int Amount = 1;
@@ -73,10 +71,14 @@ public class OrderDropdown : MonoBehaviour
 
     void Awake()
     {
-        // Bind to the TMP_Dropdown on the same GameObject by default
+        // Try to auto-bind from same GO; if not, look in children
         if (bologneseDropdown == null)
         {
             bologneseDropdown = GetComponent<TMP_Dropdown>();
+            if (bologneseDropdown == null)
+            {
+                bologneseDropdown = GetComponentInChildren<TMP_Dropdown>(true);
+            }
         }
     }
 
@@ -90,8 +92,8 @@ public class OrderDropdown : MonoBehaviour
         }
         else
         {
-            Debug.LogError("OrderDropdown: bologneseDropdown is not assigned. Assign it in the Inspector or keep this script on the same GameObject as the TMP_Dropdown.");
-            enabled = false; // Prevent further null-reference use
+            Debug.LogWarning("OrderDropdown: bologneseDropdown not found. Assign it in the Inspector if you need dropdown-driven amount changes.");
+            // Keep script enabled; other methods (SetAmount, AddItemToCart) still work
         }
     }
 

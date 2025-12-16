@@ -2247,7 +2247,6 @@ RectTransform:
   - {fileID: 1324349678}
   - {fileID: 1459053690}
   - {fileID: 244377275}
-  - {fileID: 1123894888}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2267,7 +2266,7 @@ GameObject:
   - component: {fileID: 1123894892}
   - component: {fileID: 1123894891}
   - component: {fileID: 1123894890}
-  - component: {fileID: 1123894889}
+  - component: {fileID: 1123894893}
   m_Layer: 5
   m_Name: Check
   m_TagString: Untagged
@@ -2282,32 +2281,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1123894887}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2039302575}
-  m_Father: {fileID: 1119573359}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 321, y: -176}
+  m_AnchoredPosition: {x: 871.5, y: 76.5}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1123894889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1123894887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7104315635467dd41b03c5139e3aa7c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::OrderDropdown
-  bologneseDropdown: {fileID: 0}
 --- !u!114 &1123894890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2352,9 +2338,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1123894889}
-        m_TargetAssemblyTypeName: OrderDropdown, Assembly-CSharp
-        m_MethodName: GoToOrderSummary
+      - m_Target: {fileID: 1123894893}
+        m_TargetAssemblyTypeName: Shoppingcart, Assembly-CSharp
+        m_MethodName: OnShoppingcartButtonPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2404,6 +2390,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1123894887}
   m_CullTransparentMesh: 1
+--- !u!114 &1123894893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123894887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78ddf6bc8a64a6043a1479eae14b2838, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Shoppingcart
 --- !u!1 &1141772345
 GameObject:
   m_ObjectHideFlags: 0
@@ -4610,3 +4608,4 @@ SceneRoots:
   - {fileID: 373696677}
   - {fileID: 1119573359}
   - {fileID: 1815140087}
+  - {fileID: 1123894888}

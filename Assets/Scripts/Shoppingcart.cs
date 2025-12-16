@@ -99,6 +99,11 @@ public class Shoppingcart : MonoBehaviour
             return;
         }
         Instance = this;
+        // Ensure this is a root GameObject before marking as persistent
+        if (transform.parent != null)
+        {
+            transform.SetParent(null);
+        }
         DontDestroyOnLoad(gameObject);
     }
 }

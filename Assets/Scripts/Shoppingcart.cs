@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 public class Shoppingcart : MonoBehaviour
 {
@@ -10,26 +11,38 @@ public class Shoppingcart : MonoBehaviour
     // Add an item to the cart
     public void AddItem(string itemName)
     {
+        // If the incoming item already has an amount suffix (e.g., " x2"), keep it as-is
+        if (Regex.IsMatch(itemName, @"\sx\d+\s*$"))
+        {
+            cartItems.Add(itemName);
+            Debug.Log($"Added {itemName} to cart (amount preserved).");
+            return;
+        }
+
         int amountToAdd = OrderDropdown.Amount;
-        // Use DessertDropdown.Amount if OrderDropdown.Amount is 1 and DessertDropdown.Amount > 1
+        // If dessert amount was set separately and is greater, prefer it
         if (amountToAdd == 1 && DessertDropdown.Amount > 1)
         {
             amountToAdd = DessertDropdown.Amount;
         }
-        // For main dishes that support amount selection, add the amount
-        if (itemName.Contains("Pasta Bolognese") || itemName.Contains("Pizza, Quattro Stagione"))
-        {
-            string itemWithAmount = $"{itemName} x{amountToAdd}";
-            cartItems.Add(itemWithAmount);
-            Debug.Log($"Added {itemWithAmount} to cart.");
-        }
-        // For desserts, always add amount
-        else if (
+
+        bool isDessert =
             itemName.Contains("Pannacotta") ||
             itemName.Contains("kahvi") ||
             itemName.Contains("juustokakku") ||
-            itemName.Contains("Gelato")
-        )
+            itemName.Contains("Gelato");
+
+        bool isMain =
+            itemName.Contains("Pasta Bolognese") ||
+            itemName.Contains("Pizza, Quattro Stagione");
+
+        bool isDrink =
+            itemName.Contains("Punaviini") ||
+            itemName.Contains("Valkoviini") ||
+            itemName.Contains("Peroni-olut") ||
+            itemName.Contains("Cola");
+
+        if (isDessert || isMain || isDrink)
         {
             string itemWithAmount = $"{itemName} x{amountToAdd}";
             cartItems.Add(itemWithAmount);
@@ -37,10 +50,11 @@ public class Shoppingcart : MonoBehaviour
         }
         else
         {
+            // For other categories (e.g., appetizers), keep as-is to preserve previous behavior
             cartItems.Add(itemName);
             Debug.Log($"Added {itemName} to cart.");
         }
-    // Do not reset amount here; user should control amount per item
+        // Do not reset amount here; user should control amount per item
     }
 
     // Place the order

@@ -63,6 +63,22 @@ public class Shoppingcart : MonoBehaviour
         // Do not reset amount here; user should control amount per item
     }
 
+    // Overload: Add item with explicit price and quantity (for menu-from-JSON flow)
+    public void AddItem(string itemName, float unitPrice, int quantity)
+    {
+        // Forward if this is not the singleton
+        if (Instance != null && Instance != this)
+        {
+            Instance.AddItem(itemName, unitPrice, quantity);
+            return;
+        }
+
+        if (quantity < 1) quantity = 1;
+        string formatted = $"{itemName} {unitPrice:0.00}€ x{quantity}";
+        // Reuse existing logic that preserves amount if suffix present
+        AddItem(formatted);
+    }
+
     // Place the order
     public void PlaceOrder()
     {

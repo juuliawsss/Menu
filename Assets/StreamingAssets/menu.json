@@ -1,0 +1,59 @@
+{
+  "categories": [
+    {
+      "name": "Appetizers",
+      "items": [
+        {
+          "name": "Bruschetta",
+          "description": "Paahdettua leipää, tomaattia ja basilikaa",
+          "price": 7.50
+        }
+      ]
+    },
+    {
+      "name": "Mains",
+      "items": [
+        {
+          "name": "Pasta Bolognese",
+          "description": "Spagettia, bolognesekastiketta ja parmesaania (Laktoositon, vegaaninen)",
+          "price": 15.00
+        },
+        {
+          "name": "Pizza Quattro Stagioni",
+          "description": "Neljä vuodenaikaa - klassinen pizza",
+          "price": 14.50
+        }
+      ]
+    },
+    {
+      "name": "Desserts",
+      "items": [
+        {
+          "name": "Pannacotta",
+          "description": "Vanilja pannacotta ja marjakastike",
+          "price": 6.50
+        },
+        {
+          "name": "Gelato",
+          "description": "Kaksi palloa italialaista jäätelöä",
+          "price": 5.00
+        }
+      ]
+    },
+    {
+      "name": "Drinks",
+      "items": [
+        {
+          "name": "Punaviini",
+          "description": "12cl",
+          "price": 6.50
+        },
+        {
+          "name": "Cola",
+          "description": "33cl",
+          "price": 3.50
+        }
+      ]
+    }
+  ]
+}

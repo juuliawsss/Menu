@@ -58,7 +58,7 @@ public static class OrderSaver
 
             string json = JsonUtility.ToJson(order, true);
 
-            string ordersDir = ResolveOrdersDirectory();
+            string ordersDir = OrdersPath.ActiveDir();
             Directory.CreateDirectory(ordersDir);
 
             string fileName = $"order_{DateTime.Now:yyyyMMdd_HHmmssfff}_{order.id.Substring(0, 6)}.json";
@@ -110,15 +110,5 @@ public static class OrderSaver
         };
     }
 
-    private static string ResolveOrdersDirectory()
-    {
-        // In the Unity Editor, save to the project Orders/Json directory for convenience.
-        // In builds, save under Application.persistentDataPath to ensure write permissions.
-#if UNITY_EDITOR
-        string projectRoot = Path.GetFullPath(Path.Combine(Application.dataPath, ".."));
-        return Path.Combine(projectRoot, "Orders", "Json");
-#else
-        return Path.Combine(Application.persistentDataPath, "Orders", "Json");
-#endif
-    }
+        // Path resolution handled by OrdersPath
 }

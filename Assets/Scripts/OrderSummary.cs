@@ -6,6 +6,8 @@ using System.Collections.Generic;
 public class OrderSummary : MonoBehaviour
 {
     public TextMeshProUGUI orderText; // Assign in Inspector
+    [Range(50, 120)] public int itemsSizePercent = 80; // smaller list text
+    [Range(80, 200)] public int totalSizePercent = 110; // larger total text
 
     void Start()
     {
@@ -21,7 +23,7 @@ public class OrderSummary : MonoBehaviour
         if (items != null && items.Count > 0)
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
-            sb.Append("<size=90%>"); // make all order text slightly smaller
+            sb.Append($"<size={itemsSizePercent}%>"); // make item list text slightly smaller
             sb.AppendLine("Your Order:");
             sb.AppendLine("");
 
@@ -59,9 +61,10 @@ public class OrderSummary : MonoBehaviour
                 total += price * amount;
             }
 
-            // keep total readable without the extra 90% wrapper
-            sb.AppendLine($"<b>Total: {total:0.00}€</b>");
+            // close item-size block, then add a clear, larger Total line
             sb.Append("</size>");
+            sb.AppendLine("");
+            sb.AppendLine($"<size={totalSizePercent}%><b>Total: {total:0.00}€</b></size>");
 
             orderText.text = sb.ToString();
         }

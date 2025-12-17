@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Text.RegularExpressions;
 
 public class OrderDropdown : MonoBehaviour
 {
+    private int selectedAmount = 1;
     public static int Amount = 1;
     public static string SelectedItem = "";
     public static string CurrentMenuItem = "Pasta Bolognese - Spagettia, bolognesekastiketta ja parmesaanilastuja. (Laktoositon, vegaaninen) 15.00€"; // Default item
@@ -13,15 +15,22 @@ public class OrderDropdown : MonoBehaviour
     // Call this from a UI input field or dropdown to set the amount
     public void SetAmount(string value)
     {
-        if (int.TryParse(value, out int result) && result > 0)
+        if (int.TryParse(value, out var amt))
         {
-            Amount = result;
-            Debug.Log($"Amount set to: {Amount}");
+            SetAmount(amt);
         }
         else
         {
-            Debug.LogWarning("Invalid amount entered.");
+            Debug.LogWarning($"Invalid amount input: {value}");
         }
+    }
+
+    // Int overload matching DrinksDropdown style; also keeps static Amount in sync
+    public void SetAmount(int amount)
+    {
+        selectedAmount = Mathf.Clamp(amount, 1, 6);
+        Amount = selectedAmount; // keep global in sync for existing cart logic
+        Debug.Log($"Amount set to: {selectedAmount}");
     }
 
     // Call this method to set which menu item will be added when amount is selected
@@ -34,6 +43,11 @@ public class OrderDropdown : MonoBehaviour
     // Call this method to add the currently selected item with the chosen amount to cart
     public void AddItemToCart(string itemName)
     {
+        // Fallback to current menu item when no argument is passed from the UI
+        if (string.IsNullOrWhiteSpace(itemName))
+        {
+            itemName = CurrentMenuItem;
+        }
         SelectedItem = itemName;
         Debug.Log($"Dropdown AddItemToCart called with: {itemName}, Amount: {Amount}");
         var cartObj = GameObject.FindFirstObjectByType<Shoppingcart>();
@@ -82,6 +96,12 @@ public class OrderDropdown : MonoBehaviour
         }
     }
 
+    void OnEnable()
+    {
+        // Reset amount on scene/enable to avoid stale static values bleeding between scenes
+        SetAmount(1);
+    }
+
     void Start()
     {
         if (bologneseDropdown != null)
@@ -94,6 +114,8 @@ public class OrderDropdown : MonoBehaviour
         {
             Debug.LogWarning("OrderDropdown: bologneseDropdown not found. Assign it in the Inspector if you need dropdown-driven amount changes.");
             // Keep script enabled; other methods (SetAmount, AddItemToCart) still work
+            // Ensure a sane default even without a dropdown
+            Amount = 1;
         }
     }
 

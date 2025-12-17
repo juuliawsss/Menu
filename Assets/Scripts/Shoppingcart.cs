@@ -17,6 +17,8 @@ public class Shoppingcart : MonoBehaviour
             Instance.AddItem(itemName);
             return;
         }
+        // Normalize whitespace to avoid double spaces in UI like "€  x1"
+        itemName = (itemName ?? string.Empty).Trim();
         // If the incoming item already has an amount suffix (e.g., " x2"), keep it as-is
         if (Regex.IsMatch(itemName, @"\sx\d+\s*$"))
         {
@@ -26,10 +28,13 @@ public class Shoppingcart : MonoBehaviour
         }
 
         int amountToAdd = OrderDropdown.Amount;
-        // If dessert amount was set separately and is greater, prefer it
-        if (amountToAdd == 1 && DessertDropdown.Amount > 1)
+        // If UI passed only an amount like "x2", use the current menu item and that quantity
+        var onlyAmt = Regex.Match(itemName?.Trim() ?? string.Empty, @"^x(\d+)$", RegexOptions.IgnoreCase);
+        if (onlyAmt.Success && int.TryParse(onlyAmt.Groups[1].Value, out int explicitQty) && explicitQty > 0)
         {
-            amountToAdd = DessertDropdown.Amount;
+            amountToAdd = explicitQty;
+            itemName = OrderDropdown.CurrentMenuItem;
+            Debug.Log($"Only amount provided. Using CurrentMenuItem with qty {amountToAdd}.");
         }
 
         bool isDessert =

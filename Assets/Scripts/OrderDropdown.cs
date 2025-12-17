@@ -6,6 +6,9 @@ using System.Text.RegularExpressions;
 public class OrderDropdown : MonoBehaviour
 {
     private int selectedAmount = 1;
+    private float _lastDropdownChangeAt = -999f;
+    private float _lastAddAt = -999f;
+    private string _lastAddKey = null;
     public static int Amount = 1;
     public static string SelectedItem = "";
     public static string CurrentMenuItem = "Pasta Bolognese - Spagettia, bolognesekastiketta ja parmesaanilastuja. (Laktoositon, vegaaninen) 15.00€"; // Default item
@@ -43,12 +46,25 @@ public class OrderDropdown : MonoBehaviour
     // Call this method to add the currently selected item with the chosen amount to cart
     public void AddItemToCart(string itemName)
     {
+        // Suppress accidental adds fired by dropdown value changes
+        if (Time.unscaledTime - _lastDropdownChangeAt < 0.15f)
+        {
+            Debug.Log("Add suppressed: fired during dropdown change.");
+            return;
+        }
         // Fallback to current menu item when no argument is passed from the UI
         if (string.IsNullOrWhiteSpace(itemName))
         {
             itemName = CurrentMenuItem;
         }
         SelectedItem = itemName;
+        // Suppress immediate duplicate adds of the same item+amount combo
+        string addKey = itemName + "|" + Amount.ToString();
+        if (_lastAddKey == addKey && Time.unscaledTime - _lastAddAt < 0.25f)
+        {
+            Debug.Log("Duplicate add suppressed (debounce).");
+            return;
+        }
         Debug.Log($"Dropdown AddItemToCart called with: {itemName}, Amount: {Amount}");
         var cartObj = GameObject.FindFirstObjectByType<Shoppingcart>();
         if (cartObj != null)
@@ -56,6 +72,8 @@ public class OrderDropdown : MonoBehaviour
             Debug.Log("Found Shoppingcart object, calling AddItem");
             cartObj.AddItem(itemName);
             Debug.Log($"Added {itemName} x{Amount} to cart");
+            _lastAddKey = addKey;
+            _lastAddAt = Time.unscaledTime;
         }
         else
         {
@@ -123,6 +141,43 @@ public class OrderDropdown : MonoBehaviour
     {
         var optText = bologneseDropdown.options[bologneseDropdown.value].text;
         SetAmount(optText);
+        _lastDropdownChangeAt = Time.unscaledTime;
+    }
+
+    // === Add-to-cart handlers for mains (moved from Mains.cs style) ===
+    public void OnAddPastaBologneseClicked()
+    {
+        AddMainToCart("Pasta Bolognese - Spagettia, bolognesekastiketta ja parmesaanilastuja. (Laktoositon, vegaaninen) 15.00€");
+    }
+
+    public void OnAddPizzaQuattroStagioneClicked()
+    {
+        AddMainToCart("Pizza, Quattro Stagione - Kinkkua, katkarapuja, tonnikalaa ja tuoreita herkkusieniä. (Laktoositon) 15.00€");
+    }
+
+    private void AddMainToCart(string dish)
+    {
+        if (string.IsNullOrWhiteSpace(dish)) return;
+        string item = dish.Trim();
+        int xIndex = item.LastIndexOf(" x");
+        if (xIndex > 0)
+        {
+            item = item.Substring(0, xIndex);
+        }
+        int amount = Amount;
+        if (amount < 1) amount = 1;
+        item = $"{item} x{amount}";
+
+        var cart = GameObject.FindFirstObjectByType<Shoppingcart>();
+        if (cart != null)
+        {
+            cart.AddItem(item);
+            Debug.Log($"Added main to cart: {item}");
+        }
+        else
+        {
+            Debug.LogWarning("OrderDropdown: Shoppingcart not found in scene.");
+        }
     }
 
     void Update()

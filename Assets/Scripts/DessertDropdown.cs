@@ -6,10 +6,7 @@ using System.Collections.Generic;
 public class DessertDropdown : MonoBehaviour
 {
     // Assign these in the Inspector
-    public GameObject Kakkudropdown;
-    public GameObject PannacottaDropdown;
-    public GameObject KahviDropdown;
-    public GameObject JäätelöDropdown;
+    [SerializeField] private TMP_Dropdown amountDropdown; // optional amount selector
 
     public static int Amount = 1;
     public static string SelectedDessert = "";
@@ -54,22 +51,7 @@ public class DessertDropdown : MonoBehaviour
         Debug.Log($"Current dessert set to: {dessert}");
     }
 
-    // Add the selected dessert and amount to the cart
-    public void AddDessertToCart(string dessertName)
-    {
-        SelectedDessert = dessertName;
-        Debug.Log($"Dropdown AddDessertToCart called with: {dessertName}, Amount: {Amount}");
-        var cartObj = GameObject.FindFirstObjectByType<Shoppingcart>();
-        if (cartObj != null)
-        {
-            cartObj.AddItem(dessertName + $" x{Amount}");
-            Debug.Log($"Added {dessertName} x{Amount} to cart");
-        }
-        else
-        {
-            Debug.LogWarning("Shoppingcart object not found.");
-        }
-    }
+    // Add the selected dessert and amount to the cart (unified version defined later)
 
     // Go to order summary
     public void GoToOrderSummary()
@@ -137,7 +119,11 @@ public class DessertDropdown : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        // No dropdown logic needed
+        // Hook amount dropdown if provided
+        if (amountDropdown != null)
+        {
+            amountDropdown.onValueChanged.AddListener(OnAmountDropdownChanged);
+        }
     }
 
     // Update is called once per frame
@@ -146,10 +132,85 @@ public class DessertDropdown : MonoBehaviour
         
     }
 
+    private void OnAmountDropdownChanged(int optionIndex)
+    {
+        if (amountDropdown == null || optionIndex < 0 || optionIndex >= amountDropdown.options.Count) return;
+        var text = amountDropdown.options[optionIndex].text;
+        if (int.TryParse(text, out var amt) && amt > 0)
+        {
+            SetAmount(amt);
+        }
+    }
+
     public void OnAddDessertButtonClicked(string dessertName, int amount)
     {
         SetCurrentDessert(dessertName);
         SetAmount(amount);
         AddDessertToCart(dessertName);
+    }
+
+    // === Parameterless OnClick handlers for UI buttons ===
+    public void OnPannacottaClicked()
+    {
+        string name = "Pannacotta - Vaniljalla maustettua kermavanukasta ja granaattiomenakastiketta. (Gluteeniton, Laktoositon)";
+        AddDessertToCart(FormatDessertWithPrice(name));
+    }
+
+    public void OnKahviClicked()
+    {
+        string name = "Aito italialaistyylinen kahvi";
+        AddDessertToCart(FormatDessertWithPrice(name));
+    }
+
+    public void OnJuustokakkuClicked()
+    {
+        string name = "Italialainen tuorejuustokakku";
+        AddDessertToCart(FormatDessertWithPrice(name));
+    }
+
+    public void OnGelatoClicked()
+    {
+        string name = "Gelato - Italialainen jäätelö, mansikka";
+        AddDessertToCart(FormatDessertWithPrice(name));
+    }
+
+    private string FormatDessertWithPrice(string name)
+    {
+        if (dessertPrices != null && dessertPrices.TryGetValue(name, out float price))
+        {
+            return $"{name} {price:0.00}€";
+        }
+        return name;
+    }
+
+    // Debounce: suppress immediate duplicate adds (same item & amount within 250ms)
+    private float _lastAddAt = -999f;
+    private string _lastAddKey = null;
+
+    // Unified AddDessertToCart with debounce and cleanup
+    public void AddDessertToCart(string dessertName)
+    {
+        if (string.IsNullOrWhiteSpace(dessertName)) return;
+        string baseName = dessertName.Trim();
+        // Remove any existing trailing amount
+        int xIndex = baseName.LastIndexOf(" x");
+        if (xIndex > 0) baseName = baseName.Substring(0, xIndex);
+
+        int amt = Amount > 0 ? Amount : 1;
+        string item = $"{baseName} x{amt}";
+
+        string key = baseName + "|" + amt;
+        if (_lastAddKey == key && Time.unscaledTime - _lastAddAt < 0.25f)
+        {
+            return;
+        }
+
+        var cartObj = GameObject.FindFirstObjectByType<Shoppingcart>();
+        if (cartObj != null)
+        {
+            cartObj.AddItem(item);
+            _lastAddKey = key;
+            _lastAddAt = Time.unscaledTime;
+        }
     }
 }

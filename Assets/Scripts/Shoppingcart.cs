@@ -11,6 +11,12 @@ public class Shoppingcart : MonoBehaviour
     // Add an item to the cart
     public void AddItem(string itemName)
     {
+        // If this component is not the singleton, forward to it
+        if (Instance != null && Instance != this)
+        {
+            Instance.AddItem(itemName);
+            return;
+        }
         // If the incoming item already has an amount suffix (e.g., " x2"), keep it as-is
         if (Regex.IsMatch(itemName, @"\sx\d+\s*$"))
         {
@@ -60,6 +66,12 @@ public class Shoppingcart : MonoBehaviour
     // Place the order
     public void PlaceOrder()
     {
+        // Forward if this is not the singleton
+        if (Instance != null && Instance != this)
+        {
+            Instance.PlaceOrder();
+            return;
+        }
         if (cartItems.Count == 0)
         {
             Debug.Log("Cart is empty. Cannot place order.");
@@ -79,6 +91,12 @@ public class Shoppingcart : MonoBehaviour
     // Call this from a UI button to load OrderSummary scene
     public void OnShoppingcartButtonPressed()
     {
+        // Forward if this is not the singleton
+        if (Instance != null && Instance != this)
+        {
+            Instance.OnShoppingcartButtonPressed();
+            return;
+        }
         Debug.Log($"OnShoppingcartButtonPressed: Cart has {cartItems.Count} items");
         foreach (var item in cartItems)
         {
@@ -93,17 +111,32 @@ public class Shoppingcart : MonoBehaviour
     
     void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (Instance == null)
         {
-            Destroy(gameObject);
+            // If this component is on a UI object (child of a Canvas), create a root singleton instead
+            var hasCanvasInParents = GetComponentInParent<Canvas>() != null && transform.parent != null;
+            if (hasCanvasInParents)
+            {
+                var root = new GameObject("Shoppingcart");
+                Instance = root.AddComponent<Shoppingcart>();
+                // The newly created instance's Awake will run immediately and set itself up
+                return;
+            }
+
+            // This object can be the singleton
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
             return;
         }
-        Instance = this;
-        // Ensure this is a root GameObject before marking as persistent
-        if (transform.parent != null)
+
+        if (Instance != this)
         {
-            transform.SetParent(null);
+            // Keep this component so UI OnClick references remain valid; it will forward to Instance
         }
-        DontDestroyOnLoad(gameObject);
+        else
+        {
+            // We are the singleton (e.g., created above or placed as root in the scene)
+            DontDestroyOnLoad(gameObject);
+        }
     }
 }

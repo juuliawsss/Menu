@@ -83,6 +83,20 @@ public class Shoppingcart : MonoBehaviour
             Debug.Log(item);
         }
         OrderedItems = new List<string>(cartItems);
+
+        // Save this order as its own JSON file
+        try
+        {
+            var savedPath = OrderSaver.Save(OrderedItems);
+            if (!string.IsNullOrEmpty(savedPath))
+            {
+                Debug.Log($"Order JSON written: {savedPath}");
+            }
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogError($"Failed to save order JSON: {ex}");
+        }
         cartItems.Clear(); // Only clear cart on actual order
         // Switch to OrderSummary scene after placing order
         UnityEngine.SceneManagement.SceneManager.LoadScene("OrderSummary");
